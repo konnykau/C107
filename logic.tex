@@ -1,0 +1,116 @@
+% !TEX program = lualatex
+\documentclass[12pt, openany]{book}
+
+\usepackage[
+  paperwidth=188mm,
+  paperheight=263mm,
+  top=18mm, bottom=18mm,
+  inner=18mm, outer=18mm,
+  includehead=false, includefoot=false
+]{geometry}
+
+\usepackage{luatexja-fontspec}
+\setmainfont{Harano Aji Mincho}
+\setsansfont{Harano Aji Gothic}
+\setmainjfont{Harano Aji Mincho}
+\setsansjfont{Harano Aji Gothic}
+
+\usepackage{fontspec}
+\usepackage{amsmath,amssymb}
+\usepackage{unicode-math}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{subcaption}
+\usepackage{bm}
+
+
+% \usepackage{here}
+\usepackage{luatexja}
+% \setmathfont{LatinModernMath-Regular}
+\setmathfont{Latin Modern Math}
+% \usepackage{booktabs}
+
+% \usepackage{physics2}
+
+\usepackage{tikz}
+\usetikzlibrary{circuits.logic.US, positioning}
+% \usepackage{circuitikz}
+% \usepackage{wrapfig}
+% \usepackage{float}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \fancyhead[LE,RO]{\thepage}
+% \fancyhead[LO,RE]{\leftmark}
+\usepackage{pxrubrica}
+
+
+\usepackage[hidelinks]{hyperref}
+
+\renewcommand{\figurename}{図}
+\renewcommand{\tablename}{表}
+% Chapter を「第○章」にする
+\renewcommand{\chaptername}{第}
+\renewcommand{\thechapter}{\arabic{chapter}}
+
+% ヘッダ（右上の Chapter ○）の修正
+\renewcommand{\chaptermark}[1]{%
+  \markboth{第\thechapter 章\ #1}{}%
+}
+
+\makeatletter
+\renewcommand{\@makechapterhead}[1]{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright \normalfont
+    \Huge\bfseries
+    \chaptername\thechapter 章\quad #1\par\nobreak
+    \vskip 40\p@
+  }}
+\makeatother
+
+% 目次のタイトルの修正
+\renewcommand{\contentsname}{目次}
+
+\pagestyle{plain}
+
+
+
+\begin{document}
+
+
+% --- 表紙 ---
+% \vspace{\fill}
+% \begin{center}
+%   {\Large サークル名: ありさん工房}\\[2em]
+%   {\LARGE タイトル: 論理回路入門}\\[2em]
+%   {\large 著者:fry , yt}\\[1em]
+%   {\small 発行日: 2025年12月31日}
+% \end{center}
+% \begin{figure}[htbp]
+%   \centering
+%   \includegraphics[width=0.9\textwidth]{BJT_logic/ttl_totem_pole.png}
+% \end{figure}
+% \newpage
+
+% ---表紙裏---
+% --- 目次 ---
+\tableofcontents
+\newpage
+
+% --- 本文 ---
+\input{chapters/chapter0.tex}%はじめに
+\input{chapters/chapter1.tex}%論理回路とは何か
+\input{chapters/chapter2.tex}%基礎回路理論
+\input{chapters/chapter3.tex}%トランジスタ等素子の説明
+% \input{chapters/column1.tex}%増幅回路
+\input{chapters/chapter4.tex}%トランジスタによる論理回路の実現
+\input{chapters/chapter5.tex}%MOSFETによる論理回路の実現
+% \input{chapters/chapter6.tex}%リレーによる論理回路の実現
+\input{chapters/chapter7.tex}%オープンコレクタ出力について
+\input{chapters/chapter8.tex}%電圧レベル変換
+\input{chapters/chapter9.tex}%論理回路の入出力方法
+\input{chapters/chapter10.tex}%おわりに
+
+
+
+\end{document}
